@@ -1,0 +1,22 @@
+---
+title: "Assignment w3"
+author: "Louis Duverger"
+date: "31/10/2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Cars
+
+```{r, echo =FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+library(plotly)
+library(ggplot2)
+library(dplyr)
+dt <- mtcars[,c("cyl","hp","mpg")]
+dt[,"cyl"] <- as.factor(dt[,"cyl"])
+plot_ly(data = dt, type="scatter", mode="markers", x = dt$hp, y = dt$mpg, color = dt$cyl, text = ~paste("horse power : ",dt$hp,  "<br>miles per galon: ",dt$mpg), hoverinfo = "text") %>% layout( title = "Mile per galon by horse power for different cylinders", yaxis = list(title = "Mpg"), xaxis = list(title = "Hp"))
+```
+
